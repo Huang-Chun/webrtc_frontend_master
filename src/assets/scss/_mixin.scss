@@ -1,0 +1,215 @@
+@import "./variable";
+
+// font
+
+@mixin font-size-small {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: normal;
+}
+@mixin font-size-regular {
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: normal;
+}
+@mixin font-size-middle {
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+}
+@mixin font-size-large {
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+}
+@mixin font-size-x-large {
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: normal;
+}
+
+// layout
+
+@mixin flex-layout(
+  $direction: row,
+  $justifyContent: flex-start,
+  $alignItems: center,
+  $flexWrap: nowrap
+) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-wrap: $flexWrap;
+}
+
+// button
+
+@mixin button-primary {
+  border: none;
+  width: 170px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: $buttonColor;
+  color: #fff;
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $buttonColorHover;
+  }
+  @media (max-width: 1024px) {
+    height: 30px;
+    font-size: 16px;
+    width: 120px;
+    border-radius: 5px;
+  }
+  @media (max-width: 360px) {
+    height: 42px;
+    font-size: 18px;
+    width: 170px;
+    border-radius: 10px;
+  }
+}
+
+@mixin button-secondary {
+  border: none;
+  padding: 0.5em 2em;
+  border-radius: 0.5em;
+  background-color: transparent;
+  color: $accentColor;
+  &:hover,
+  &:active {
+    background-color: lighten($accentColor, 40%);
+  }
+}
+
+@mixin button-icon($img, $hoverImg) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $backgroundColor;
+  border: none;
+  color: $textColor;
+  &::before {
+    content: "";
+    display: block;
+    width: 71px;
+    height: 71px;
+    background-image: url($img);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &:hover,
+  &.active {
+    color: $textColorHover;
+    background-color: rgba(100, 100, 105, 0.15);
+    &::before {
+      background-image: url($hoverImg);
+    }
+  }
+}
+
+// page
+
+@mixin page-desktop {
+  background-image: linear-gradient(to right, #a65552, #5a0b15);
+  @include flex-layout(row, center, center);
+  height: 100vh;
+  z-index: 0;
+  position: relative;
+  .content {
+    width: 490px;
+    height: 485px;
+    background-color: #fff;
+    position: relative;
+    padding: 45px;
+    &::before {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      content: "";
+      width: 80vw;
+      height: 816.715984905px;
+      background-image: linear-gradient(90deg, #5a0b15, #2b060c);
+      opacity: 0.25;
+      transform-origin: left bottom;
+      transform: rotate(0.79rad);
+    }
+    .buttons {
+      @include flex-layout(row, space-between);
+      width: 75%;
+      margin-bottom: 32px;
+      .button {
+        @include font-size-middle;
+        @include button-primary;
+        margin: 0;
+      }
+    }
+    .button {
+      @include font-size-middle;
+      @include button-primary;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1024px) {
+      width: 348px;
+      height: 348px;
+      padding: 31px;
+      &::before {
+        height: 579.827560573px;
+      }
+      .buttons {
+        margin-bottom: 24px;
+        width: 100%;
+        .button {
+          margin: 0 15px;
+        }
+      }
+    }
+    @media (max-width: 360px) {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      .buttons {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin form {
+  @include flex-layout(column, center, center, wrap);
+  align-content: space-between;
+  height: 425px;
+  color: $textColor;
+  .input {
+    width: 70%;
+    margin-top: 20px;
+    label {
+      display: block;
+      width: 100%;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      border: none;
+      background-color: rgba(100, 100, 105, 0.15);
+      font-size: inherit;
+      height: 38px;
+      text-indent: 1em;
+    }
+    &.visibility {
+      position: relative;
+      img {
+        position: absolute;
+        bottom: 2px;
+        right: -50px;
+        cursor: pointer;
+      }
+    }
+  }
+}

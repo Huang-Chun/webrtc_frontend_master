@@ -1,0 +1,27 @@
+// font
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap");
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$font-family-primary: "Noto Sans TC", sans-serif;
+
+// screen size
+$mobile-small: 320px;
+$mobile-middle: 375px;
+$mobile-large: 414px;
+$tablet-small: 480px;
+$tablet-large: 768px;
+$screen-small: 1024px;
+$screen-middle: 1280px;
+$screen-large: 1960px;
+
+// color
+$buttonColor: #f6323e;
+$buttonColorHover: #9B2322;
+$textColor: #646469;
+$textColorHover: #424144;
+$accentColor: #f6323e;
+$backgroundColor: #fff;
